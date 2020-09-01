@@ -1,0 +1,317 @@
+openapi: 3.0.0
+tags:
+  - all
+  - admin
+info:
+  title: test-api dev
+  version: "1.0"
+  description: |
+    test api
+  contact:
+    name: yuuki najima
+servers:
+  - url: "http://localhost:3000"
+    description: localhost
+  - url: "https://test.example.com/test-api"
+    description: dev-hosting
+paths:
+  /books:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/book"
+      operationId: get-books
+      description: book list
+    post:
+      summary: ""
+      operationId: post-books
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/book"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/book"
+      description: create new book
+      tags:
+        - admin
+        - all
+    parameters: []
+  "/books/{id}":
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+        - admin
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/book"
+      operationId: get-books-id
+      description: get book info
+    delete:
+      summary: ""
+      operationId: delete-books-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/result"
+      tags:
+        - admin
+      description: delete book
+    patch:
+      summary: ""
+      operationId: patch-books-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/book"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/book"
+      tags:
+        - admin
+      description: update book info
+  /authers:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/auther"
+      operationId: get-authers
+      description: get authers
+    post:
+      summary: ""
+      operationId: post-authers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/auther"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/auther"
+      tags:
+        - admin
+        - all
+      description: create auther
+    parameters: []
+  "/authers/{id}":
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/auther"
+      operationId: get-authers-id
+      description: get auther info
+    patch:
+      summary: ""
+      operationId: patch-authers-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/auther"
+      tags:
+        - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/auther"
+      description: update auther info
+    delete:
+      summary: ""
+      operationId: delete-authers-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/result"
+      tags:
+        - admin
+      description: delete auther
+  /categories:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/category"
+      operationId: get-categories
+      description: get categories
+    post:
+      summary: ""
+      operationId: post-categories
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/category"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/category"
+      tags:
+        - admin
+      description: create categories
+    parameters: []
+  "/categories/{id}":
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/category"
+      operationId: get-categories-id
+      description: get category
+    patch:
+      summary: ""
+      operationId: patch-categories-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/category"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/category"
+      description: update category
+      tags:
+        - admin
+    delete:
+      summary: ""
+      operationId: delete-categories-id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/result"
+      tags:
+        - admin
+      description: delete category
+components:
+  schemas:
+    book:
+      title: book
+      type: object
+      properties:
+        id:
+          type: integer
+        auther_id:
+          type: integer
+        category_list:
+          type: array
+          items:
+            type: integer
+    auther:
+      title: auther
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    category:
+      title: category
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    result:
+      title: results
+      type: object
+      x-examples: {}
+      description: results
+      properties:
+        success:
+          type: boolean
+  securitySchemes: {}
