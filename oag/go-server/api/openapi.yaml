@@ -1,0 +1,371 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: yuuki najima
+  description: |
+    test api
+  title: test-api dev
+  version: "1.0"
+servers:
+- description: localhost
+  url: http://localhost:3000
+- description: dev-hosting
+  url: https://test.example.com/test-api
+tags: []
+paths:
+  /books:
+    get:
+      description: book list
+      operationId: get-books
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/book'
+                type: array
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+    post:
+      description: create new book
+      operationId: post-books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/book'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+          description: OK
+      tags:
+      - admin
+      - all
+  /books/{id}:
+    delete:
+      description: delete book
+      operationId: delete-books-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/result'
+          description: OK
+      tags:
+      - admin
+    get:
+      description: get book info
+      operationId: get-books-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+      - admin
+    patch:
+      description: update book info
+      operationId: patch-books-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/book'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+          description: OK
+      tags:
+      - admin
+  /authers:
+    get:
+      description: get authers
+      operationId: get-authers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/auther'
+                type: array
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+    post:
+      description: create auther
+      operationId: post-authers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auther'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auther'
+          description: OK
+      tags:
+      - admin
+      - all
+  /authers/{id}:
+    delete:
+      description: delete auther
+      operationId: delete-authers-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/result'
+          description: OK
+      tags:
+      - admin
+    get:
+      description: get auther info
+      operationId: get-authers-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auther'
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+    patch:
+      description: update auther info
+      operationId: patch-authers-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auther'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auther'
+          description: OK
+      tags:
+      - admin
+  /categories:
+    get:
+      description: get categories
+      operationId: get-categories
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/category'
+                type: array
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+    post:
+      description: create categories
+      operationId: post-categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+          description: OK
+      tags:
+      - admin
+  /categories/{id}:
+    delete:
+      description: delete category
+      operationId: delete-categories-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/result'
+          description: OK
+      tags:
+      - admin
+    get:
+      description: get category
+      operationId: get-categories-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+          description: OK
+      summary: Your GET endpoint
+      tags:
+      - all
+    patch:
+      description: update category
+      operationId: patch-categories-id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+          description: OK
+      tags:
+      - admin
+components:
+  schemas:
+    book:
+      example:
+        category_list:
+        - 1
+        - 1
+        auther_id: 6
+        id: 0
+      properties:
+        id:
+          type: integer
+        auther_id:
+          type: integer
+        category_list:
+          items:
+            type: integer
+          type: array
+      title: book
+      type: object
+    auther:
+      example:
+        name: name
+        id: 0
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      title: auther
+      type: object
+    category:
+      example:
+        name: name
+        id: 0
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      title: category
+      type: object
+    result:
+      description: results
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      title: results
+      type: object
+      x-examples: {}
+  securitySchemes: {}
